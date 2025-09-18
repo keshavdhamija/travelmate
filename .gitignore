@@ -1,0 +1,10 @@
+venv/
+_pycache_/
+*.pyc
+.env
+trips.json
+guides.json
+*.sqlite3
+*.log
+.idea/
+.vscode/
