@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from .. import models, schemas, database
-
+from typing import List
 router = APIRouter(
     prefix="/travellers",
     tags=["Travellers"]
@@ -18,7 +18,7 @@ def get_db():
 # -------------------------------
 # GET all travellers
 # -------------------------------
-@router.get("/", response_model=schemas.TravellerList)
+@router.get("/", response_model=List[schemas.Traveller])
 def get_travellers(db: Session = Depends(get_db)):
     return db.query(models.Traveller).all()
 
