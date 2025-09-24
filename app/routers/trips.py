@@ -19,7 +19,7 @@ def get_db():
 def get_trips(db: Session = Depends(get_db)):
     return db.query(models.Trip).all()
 
-@router.post("/", response_model=schemas.TripResponse)
+@router.post("/", response_model=schemas.Trip)
 def create_trip(trip: schemas.TripCreate, db: Session = Depends(get_db)):
     # create object of Trip class
     db_trip = models.Trip(
@@ -33,7 +33,7 @@ def create_trip(trip: schemas.TripCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_trip)
 
-    # add Travellers
+    # add Travellers yes
     for traveller in trip.travellers:
         db_traveller = models.Traveller(
             name=traveller.name,

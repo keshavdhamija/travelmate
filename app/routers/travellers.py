@@ -26,7 +26,7 @@ def get_travellers(db: Session = Depends(get_db)):
 # POST create a traveller
 # -------------------------------
 @router.post("/", response_model=schemas.Traveller)
-def create_traveller(traveller: schemas.TravellerCreate, db: Session = Depends(get_db)):
+def create_traveller(traveller: schemas.Traveller, db: Session = Depends(get_db)):
     new_traveller = models.Traveller(**traveller.dict())
     db.add(new_traveller)
     db.commit()
